@@ -2,6 +2,7 @@ import React from "react";
 import { AppContext } from "../AppProvider";
 import styled from "styled-components";
 import img from "../assets//partly-cloudy-day.jpg";
+
 const CurrentWeatherContainer = styled.div`
   display: flex;
   padding: 25px 30px;
@@ -39,11 +40,8 @@ export default function CurrentWeather() {
               <WeatherConCurrent>
                 <Temp> {currentWeather.main.temp} </Temp>
                 <City> {currentWeather.name} </City>
+                <Temp>{currentWeather.weather[0].main}</Temp>
               </WeatherConCurrent>
-              {/* <span> min: {currentWeather.main.temp_min} </span>
-              <span> max: {currentWeather.main.temp_max} </span>
-              <span> Humidity: {currentWeather.main.humidity} </span>
-              <span> Pressure: {currentWeather.main.pressure} </span> */}
             </CurrentWeatherContainer>
           ) : null}
         </React.Fragment>

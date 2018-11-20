@@ -5,12 +5,24 @@ export const AppContext = React.createContext();
 export class AppProvider extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       currentWeather: null,
       forecastWeather: null
     };
   }
   componentDidMount() {
+    var today = new Date(),
+      date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+    this.setState({
+      date
+    });
+    console.log(date);
     axios
       .get(
         "http://api.openweathermap.org/data/2.5/weather?q=warsaw,poland&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"

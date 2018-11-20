@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AppProvider from "./AppProvider";
 import styled from "styled-components";
 import CurrentWeather from "./components/CurrentWeather";
+import WeatherAdditional from "./components/WeatherAdditional";
 
 const AppLayout = styled.div`
   width: 100%;
@@ -17,7 +18,7 @@ class App extends Component {
       <AppLayout>
         <AppProvider>
           <CurrentWeather />
-          <CurrentWeather />
+          <WeatherAdditional />
         </AppProvider>
       </AppLayout>
     );
