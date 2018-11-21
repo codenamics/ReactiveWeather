@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "../AppProvider";
 import styled from "styled-components";
+import Forcast from "./Forcast";
 
 const Units = styled.p`
   font-size: 12px;
@@ -38,27 +39,22 @@ export default function WeatherAdditional() {
       {({ currentWeather, date }) => (
         <ConditionsContainer>
           <Header>
-            <span>Statistics</span>
-            <span>{date}</span>
+            <span> Statistics </span> <span> {date} </span>
           </Header>
           {currentWeather ? (
             <Conditions>
               <Condition>
-                {currentWeather.main.temp_min}
-                <Units>TMax</Units>
+                {currentWeather.wind.speed} <Units> Wind m/s </Units>
               </Condition>
               <Condition>
-                {currentWeather.main.temp_max} <Units>TMin</Units>
+                {currentWeather.main.humidity} <Units> Humidity </Units>
               </Condition>
               <Condition>
-                {currentWeather.main.humidity} <Units>Humidity</Units>
-              </Condition>
-              <Condition>
-                {currentWeather.main.pressure}
-                <Units>Pressure</Units>
+                {currentWeather.main.pressure} <Units> Pressure </Units>
               </Condition>
             </Conditions>
           ) : null}
+          <Forcast />
         </ConditionsContainer>
       )}
     </AppContext.Consumer>

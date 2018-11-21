@@ -8,11 +8,12 @@ export class AppProvider extends Component {
 
     this.state = {
       currentWeather: null,
-      forecastWeather: null
+      forecastWeather: null,
+      dates: null
     };
   }
   componentDidMount() {
-    var today = new Date(),
+    let today = new Date(),
       date =
         today.getFullYear() +
         "-" +
@@ -22,10 +23,10 @@ export class AppProvider extends Component {
     this.setState({
       date
     });
-    console.log(date);
+
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/weather?q=warsaw,poland&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
+        "http://api.openweathermap.org/data/2.5/weather?q=london,uk&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
       )
       .then(res =>
         this.setState(
@@ -51,10 +52,19 @@ export class AppProvider extends Component {
       )
       .catch(err => console.log(err));
   }
+
+  setDate = async currentWeather => {
+    let fulldates = await currentWeather;
+    this.setState({
+      fulldates
+    });
+    console.log(fulldates);
+  };
   render() {
     return (
       <AppContext.Provider value={this.state}>
-        {this.props.children}
+        {" "}
+        {this.props.children}{" "}
       </AppContext.Provider>
     );
   }

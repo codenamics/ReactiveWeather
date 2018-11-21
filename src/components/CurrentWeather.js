@@ -2,7 +2,7 @@ import React from "react";
 import { AppContext } from "../AppProvider";
 import styled from "styled-components";
 import img from "../assets//partly-cloudy-day.jpg";
-
+import Sun from "./Sun";
 const CurrentWeatherContainer = styled.div`
   display: flex;
   padding: 25px 30px;
@@ -40,7 +40,8 @@ export default function CurrentWeather() {
               <WeatherConCurrent>
                 <Temp> {currentWeather.main.temp} </Temp>
                 <City> {currentWeather.name} </City>
-                <Temp>{currentWeather.weather[0].main}</Temp>
+                <Temp> {currentWeather.weather[0].main} </Temp>
+                <Sun date={currentWeather} />
               </WeatherConCurrent>
             </CurrentWeatherContainer>
           ) : null}
