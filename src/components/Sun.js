@@ -7,12 +7,10 @@ export default function Sun(date) {
   let sunRise = moment.unix(sunrise).format("hh:mm a");
   let sunSet = moment.unix(sunset).format("hh:mm a");
 
-  console.log(sunRise); // 09:32 pm
   console.log(sunSet); // 09:33 pm
   return (
     <div>
-      {sunRise}
-      {sunSet}
+      {sunRise} {sunSet}
     </div>
   );
 }

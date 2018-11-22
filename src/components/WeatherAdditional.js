@@ -15,6 +15,10 @@ const ConditionsContainer = styled.div`
   font-size: 18px;
 `;
 
+const ForCastContainer = styled(ConditionsContainer)`
+  background-color: #fff;
+`;
+
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
@@ -37,25 +41,29 @@ export default function WeatherAdditional() {
   return (
     <AppContext.Consumer>
       {({ currentWeather, date }) => (
-        <ConditionsContainer>
-          <Header>
-            <span> Statistics </span> <span> {date} </span>
-          </Header>
-          {currentWeather ? (
-            <Conditions>
-              <Condition>
-                {currentWeather.wind.speed} <Units> Wind m/s </Units>
-              </Condition>
-              <Condition>
-                {currentWeather.main.humidity} <Units> Humidity </Units>
-              </Condition>
-              <Condition>
-                {currentWeather.main.pressure} <Units> Pressure </Units>
-              </Condition>
-            </Conditions>
-          ) : null}
-          <Forcast />
-        </ConditionsContainer>
+        <div>
+          <ConditionsContainer>
+            <Header>
+              <span> Statistics </span> <span> {date} </span>
+            </Header>
+            {currentWeather ? (
+              <Conditions>
+                <Condition>
+                  {currentWeather.wind.speed} <Units> Wind m / s </Units>
+                </Condition>
+                <Condition>
+                  {currentWeather.main.humidity} <Units> Humidity </Units>
+                </Condition>
+                <Condition>
+                  {currentWeather.main.pressure} <Units> Pressure </Units>
+                </Condition>
+              </Conditions>
+            ) : null}
+          </ConditionsContainer>
+          <ForCastContainer>
+            <Forcast />
+          </ForCastContainer>
+        </div>
       )}
     </AppContext.Consumer>
   );
