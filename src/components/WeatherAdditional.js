@@ -3,6 +3,11 @@ import { AppContext } from "../AppProvider";
 import styled from "styled-components";
 import Forcast from "./Forcast";
 
+const Container = styled.div`
+  display: grid;
+  grid-template-rows: 0.25fr 0.75px;
+`;
+
 const Units = styled.p`
   font-size: 12px;
 `;
@@ -10,13 +15,16 @@ const Units = styled.p`
 const ConditionsContainer = styled.div`
   padding: 25px 30px;
   background-color: #2789ec;
-  height: 25%;
+
   font-weight: 500;
   font-size: 18px;
 `;
 
 const ForCastContainer = styled(ConditionsContainer)`
   background-color: #fff;
+  min-height: 500px;
+
+  overflow: auto;
 `;
 
 const Header = styled.div`
@@ -29,7 +37,7 @@ const Conditions = styled(Header)`
   margin-top: 15px;
   padding: 20px;
   font-size: 50px;
-  height: 75%;
+
   align-items: center;
   border-top: 1px solid #ffffff40;
 `;
@@ -41,7 +49,7 @@ export default function WeatherAdditional() {
   return (
     <AppContext.Consumer>
       {({ currentWeather, date }) => (
-        <div>
+        <Container>
           <ConditionsContainer>
             <Header>
               <span> Statistics </span> <span> {date} </span>
@@ -63,7 +71,7 @@ export default function WeatherAdditional() {
           <ForCastContainer>
             <Forcast />
           </ForCastContainer>
-        </div>
+        </Container>
       )}
     </AppContext.Consumer>
   );
