@@ -26,7 +26,7 @@ export class AppProvider extends Component {
 
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/weather?q=london,uk&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
+        "http://api.openweathermap.org/data/2.5/weather?q=warsaw,pl&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
       )
       .then(res =>
         this.setState(
@@ -40,7 +40,7 @@ export class AppProvider extends Component {
 
     axios
       .get(
-        "http://api.openweathermap.org/data/2.5/forecast?q=london,uk&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
+        "http://api.openweathermap.org/data/2.5/forecast?q=warsaw,pl&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
       )
       .then(res =>
         this.setState(

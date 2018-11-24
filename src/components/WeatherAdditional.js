@@ -2,20 +2,27 @@ import React from "react";
 import { AppContext } from "../AppProvider";
 import styled from "styled-components";
 import Forcast from "./Forcast";
+import Sun from "./Sun";
+import wind from "../assets/wind.png";
+import hum from "../assets/hum.png";
+import press from "../assets/press.png";
 
 const Container = styled.div`
   display: grid;
   grid-template-rows: 0.25fr 0.75px;
 `;
-
+const Icons = styled.img`
+  width: 50px;
+  height: auto;
+`;
 const Units = styled.p`
-  font-size: 12px;
+  margin: 0 0 9px 5px;
+  font-size: 14px;
 `;
 
 const ConditionsContainer = styled.div`
-  padding: 25px 30px;
+  padding: 15px 30px;
   background-color: #2789ec;
-
   font-weight: 500;
   font-size: 18px;
 `;
@@ -23,7 +30,6 @@ const ConditionsContainer = styled.div`
 const ForCastContainer = styled(ConditionsContainer)`
   background-color: #fff;
   min-height: 500px;
-
   overflow: auto;
 `;
 
@@ -31,6 +37,7 @@ const Header = styled.div`
   display: flex;
   justify-content: space-between;
   color: #fff;
+  align-items: center;
 `;
 
 const Conditions = styled(Header)`
@@ -42,7 +49,13 @@ const Conditions = styled(Header)`
   border-top: 1px solid #ffffff40;
 `;
 const Condition = styled.span`
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+const ConditionRow = styled(Condition)`
+  flex-direction: row;
+  align-items: flex-end;
 `;
 
 export default function WeatherAdditional() {
@@ -52,18 +65,36 @@ export default function WeatherAdditional() {
         <Container>
           <ConditionsContainer>
             <Header>
-              <span> Statistics </span> <span> {date} </span>
+              <span>
+                {currentWeather ? <Sun date={currentWeather} /> : null}
+              </span>{" "}
+              <span> {date} </span>
             </Header>
             {currentWeather ? (
               <Conditions>
                 <Condition>
-                  {currentWeather.wind.speed} <Units> Wind m / s </Units>
+                  <ConditionRow>
+                    {" "}
+                    {currentWeather.wind.speed} <Units>m/s</Units>
+                  </ConditionRow>
+                  <Icons src={wind} />
+                </Condition>
+
+                <Condition>
+                  <ConditionRow>
+                    {" "}
+                    {currentWeather.main.humidity}
+                    <Units>%</Units>
+                  </ConditionRow>
+                  <Icons src={hum} />
                 </Condition>
                 <Condition>
-                  {currentWeather.main.humidity} <Units> Humidity </Units>
-                </Condition>
-                <Condition>
-                  {currentWeather.main.pressure} <Units> Pressure </Units>
+                  <ConditionRow>
+                    {" "}
+                    {currentWeather.main.pressure}
+                    <Units>hPa</Units>
+                  </ConditionRow>
+                  <Icons src={press} />
                 </Condition>
               </Conditions>
             ) : null}

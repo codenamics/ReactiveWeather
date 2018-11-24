@@ -38,10 +38,9 @@ export default function CurrentWeather() {
           {currentWeather ? (
             <CurrentWeatherContainer>
               <WeatherConCurrent>
-                <Temp> {currentWeather.main.temp} </Temp>
+                <Temp> {currentWeather.main.temp}&#8451; </Temp>
                 <City> {currentWeather.name} </City>
                 <Temp> {currentWeather.weather[0].main} </Temp>
-                <Sun date={currentWeather} />
               </WeatherConCurrent>
             </CurrentWeatherContainer>
           ) : null}
