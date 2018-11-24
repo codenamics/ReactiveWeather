@@ -29,15 +29,15 @@ export default function Forcast() {
           <ul>
             {forecastWeather
               ? forecastWeather.list.splice(0, 30).map(con => (
-                  <ForecastRow>
+                  <ForecastRow key={con.dt}>
                     <ForcastLeft>
                       {moment.unix(con.dt).format("dddd")}
                     </ForcastLeft>
                     <ForcastBox>
                       {moment.unix(con.dt).format("HH:MM a")}
                     </ForcastBox>
-                    <ForcastBox>{con.weather[0].main}</ForcastBox>
-                    <ForcastRight>{con.main.temp} &#8451;</ForcastRight>
+                    <ForcastBox> {con.weather[0].main} </ForcastBox>
+                    <ForcastRight> {con.main.temp}&#8451;</ForcastRight>
                   </ForecastRow>
                 ))
               : null}

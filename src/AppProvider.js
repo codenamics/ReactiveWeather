@@ -8,33 +8,18 @@ export class AppProvider extends Component {
 
     this.state = {
       currentWeather: null,
-      forecastWeather: null,
-      dates: null
+      forecastWeather: null
     };
   }
   componentDidMount() {
-    let today = new Date(),
-      date =
-        today.getFullYear() +
-        "-" +
-        (today.getMonth() + 1) +
-        "-" +
-        today.getDate();
-    this.setState({
-      date
-    });
-
     axios
       .get(
         "http://api.openweathermap.org/data/2.5/weather?q=warsaw,pl&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
       )
       .then(res =>
-        this.setState(
-          {
-            currentWeather: res.data
-          },
-          console.log(res.data)
-        )
+        this.setState({
+          currentWeather: res.data
+        })
       )
       .catch(err => console.log(err));
 
@@ -43,12 +28,9 @@ export class AppProvider extends Component {
         "http://api.openweathermap.org/data/2.5/forecast?q=warsaw,pl&units=metric&appid=4e2b39896dcc3622534cc498191bdc35"
       )
       .then(res =>
-        this.setState(
-          {
-            forecastWeather: res.data
-          },
-          console.log(res.data)
-        )
+        this.setState({
+          forecastWeather: res.data
+        })
       )
       .catch(err => console.log(err));
   }

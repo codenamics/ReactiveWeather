@@ -6,6 +6,7 @@ import Sun from "./Sun";
 import wind from "../assets/wind.png";
 import hum from "../assets/hum.png";
 import press from "../assets/press.png";
+import moment from "moment";
 
 const Container = styled.div`
   display: grid;
@@ -61,14 +62,21 @@ const ConditionRow = styled(Condition)`
 export default function WeatherAdditional() {
   return (
     <AppContext.Consumer>
-      {({ currentWeather, date }) => (
+      {({ currentWeather }) => (
         <Container>
           <ConditionsContainer>
             <Header>
               <span>
                 {currentWeather ? <Sun date={currentWeather} /> : null}
               </span>{" "}
-              <span> {date} </span>
+              <span>
+                {" "}
+                {currentWeather ? (
+                  <div>
+                    {moment.unix(currentWeather.dt).format("MMM D, YYYY ")}
+                  </div>
+                ) : null}{" "}
+              </span>
             </Header>
             {currentWeather ? (
               <Conditions>
