@@ -1,7 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 import { AppContext } from "../AppProvider";
 import styled from "styled-components";
-import img from "../assets//partly-cloudy-day.jpg";
+import fog from "../assets/fog.jpg";
+import storm from "../assets/storm.jpeg";
+import clouds from "../assets/clouds.jpg";
+import rain from "../assets/rain.jpg";
+import snow from "../assets/snow.jpg";
+import clear from "../assets/clear-day.jpg";
+
+const calcImg = ({ currentWeather }) => {
+  const data = currentWeather.weather[0].main;
+
+  if (data === "Thunderstorm") {
+    return storm;
+  }
+  if (data === "Rain" || data === "Drizzle") {
+    return rain;
+  }
+  if (data === "Snow") {
+    return snow;
+  }
+  if (data === "Clouds") {
+    return clouds;
+  }
+  if (data === "Clear") {
+    return clear;
+  }
+  if (data === "Atmosphere") {
+    return fog;
+  }
+};
 
 const CurrentWeatherContainer = styled.div`
   display: flex;
@@ -9,7 +37,7 @@ const CurrentWeatherContainer = styled.div`
   height: (100% - 50px);
   color: #fff;
   align-items: center;
-  background-image: url(${img});
+  background-image: url(${calcImg});
   background-size: cover;
 `;
 
@@ -29,22 +57,26 @@ const Span = styled.span`
   font-weight: 700;
 `;
 
-export default function CurrentWeather() {
-  return (
-    <AppContext.Consumer>
-      {({ currentWeather }) => (
-        <React.Fragment>
-          {currentWeather ? (
-            <CurrentWeatherContainer>
-              <WeatherContainerCurrent>
-                <Span> {currentWeather.main.temp}&#8451; </Span>
-                <City> {currentWeather.name} </City>
-                <Span> {currentWeather.weather[0].main} </Span>
-              </WeatherContainerCurrent>
-            </CurrentWeatherContainer>
-          ) : null}
-        </React.Fragment>
-      )}
-    </AppContext.Consumer>
-  );
+export class CurrentWeather extends Component {
+  render() {
+    return (
+      <AppContext.Consumer>
+        {({ currentWeather }) => (
+          <React.Fragment>
+            {currentWeather ? (
+              <CurrentWeatherContainer currentWeather={currentWeather}>
+                <WeatherContainerCurrent>
+                  <Span> {currentWeather.main.temp}&#8451; </Span>
+                  <City> {currentWeather.name} </City>
+                  <Span> {currentWeather.weather[0].main} </Span>
+                </WeatherContainerCurrent>
+              </CurrentWeatherContainer>
+            ) : null}
+          </React.Fragment>
+        )}
+      </AppContext.Consumer>
+    );
+  }
 }
+
+export default CurrentWeather;

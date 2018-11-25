@@ -68,39 +68,32 @@ export default function WeatherAdditional() {
             <Header>
               <span>
                 {currentWeather ? <Sun date={currentWeather} /> : null}
-              </span>{" "}
+              </span>
               <span>
-                {" "}
                 {currentWeather ? (
                   <div>
                     {moment.unix(currentWeather.dt).format("MMM D, YYYY ")}
                   </div>
-                ) : null}{" "}
+                ) : null}
               </span>
             </Header>
             {currentWeather ? (
               <Conditions>
                 <Condition>
                   <ConditionRow>
-                    {" "}
-                    {currentWeather.wind.speed} <Units>m/s</Units>
+                    {currentWeather.wind.speed} <Units> m / s </Units>
                   </ConditionRow>
                   <Icons src={wind} />
                 </Condition>
-
                 <Condition>
                   <ConditionRow>
-                    {" "}
-                    {currentWeather.main.humidity}
-                    <Units>%</Units>
+                    {currentWeather.main.humidity} <Units> % </Units>
                   </ConditionRow>
                   <Icons src={hum} />
                 </Condition>
                 <Condition>
                   <ConditionRow>
-                    {" "}
-                    {currentWeather.main.pressure}
-                    <Units>hPa</Units>
+                    {currentWeather.main.pressure} <Units> hPa </Units>
                   </ConditionRow>
                   <Icons src={press} />
                 </Condition>
