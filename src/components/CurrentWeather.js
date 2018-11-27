@@ -30,11 +30,7 @@ const calcImg = ({ currentWeather }) => {
     return fog;
   }
 };
-const LocationInput = styled.input`
-  width: 80%;
-  height: 50px;
-`;
-const SetLocation = styled.button``;
+
 const CurrentWeatherContainer = styled.div`
   display: flex;
   padding: 25px 30px;
@@ -61,21 +57,11 @@ const Span = styled.span`
   font-weight: 700;
 `;
 
-function takeLocation(e, getLocation) {
-  let input = e.target.value;
-  if (!input) {
-    getLocation(null);
-    return;
-  } else {
-    getLocation(input);
-  }
-}
-
 export default function CurrentWeather() {
   return (
     <AppContext.Consumer>
-      {({ currentWeather, getLocation, setLocation }) => (
-        <React.Fragment>
+      {({ currentWeather }) => (
+        <>
           {currentWeather ? (
             <CurrentWeatherContainer currentWeather={currentWeather}>
               <WeatherContainerCurrent>
@@ -84,14 +70,8 @@ export default function CurrentWeather() {
                 <Span> {currentWeather.weather[0].main} </Span>
               </WeatherContainerCurrent>
             </CurrentWeatherContainer>
-          ) : (
-            <div>
-              {" "}
-              <LocationInput onChange={e => takeLocation(e, getLocation)} />
-              <SetLocation onClick={setLocation} />
-            </div>
-          )}
-        </React.Fragment>
+          ) : null}
+        </>
       )}
     </AppContext.Consumer>
   );
