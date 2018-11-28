@@ -12,7 +12,8 @@ export class AppProvider extends Component {
       city: null,
       location: false,
       getLocation: this.getLocation,
-      setLocation: this.setLocation
+      setLocation: this.setLocation,
+      changeLocation: this.changeLocation
     };
   }
 
@@ -55,6 +56,12 @@ export class AppProvider extends Component {
   getLocation = input => {
     this.setState({
       city: input
+    });
+  };
+  changeLocation = () => {
+    localStorage.clear();
+    this.setState({
+      location: false
     });
   };
   setLocal = () => {

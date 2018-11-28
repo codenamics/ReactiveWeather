@@ -42,9 +42,9 @@ export default function SetLocation() {
   return (
     <AppContext.Consumer>
       {({ getLocation, setLocation }) => (
-        <Container>
+        <Container className="anim__head">
           <LocationInput onChange={e => takeLocation(e, getLocation)} />
-          <SetLocationBTN onClick={setLocation}>Set Location</SetLocationBTN>
+          <SetLocationBTN onClick={setLocation}> Set Location </SetLocationBTN>
         </Container>
       )}
     </AppContext.Consumer>

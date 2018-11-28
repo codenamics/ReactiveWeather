@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0px;
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+@keyframes fromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
+
+.anim__head {
+  animation-name: fromBottom;
+  animation-duration: 1s;
+
+}
+
+.anim__head-1 {
+  animation-name: fromBottom;
+  animation-duration: 1.5s;
+
+}
+
+.anim__head-2 {
+  animation-name: fromBottom;
+  animation-duration: 2s;
+
+}

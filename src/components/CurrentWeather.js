@@ -39,6 +39,7 @@ const CurrentWeatherContainer = styled.div`
   align-items: center;
   background-image: url(${calcImg});
   background-size: cover;
+  position: relative;
 `;
 
 const WeatherContainerCurrent = styled.div`
@@ -56,14 +57,23 @@ const Span = styled.span`
   font-size: 90px;
   font-weight: 700;
 `;
-
+const ChangeLocation = styled.span`
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 55px;
+`;
 export default function CurrentWeather() {
   return (
     <AppContext.Consumer>
-      {({ currentWeather }) => (
+      {({ currentWeather, changeLocation }) => (
         <>
           {currentWeather ? (
             <CurrentWeatherContainer currentWeather={currentWeather}>
+              <ChangeLocation onClick={changeLocation}>
+                {" "}
+                <i class="fas fa-search" />
+              </ChangeLocation>
               <WeatherContainerCurrent>
                 <Span> {currentWeather.main.temp}&#8451; </Span>
                 <City> {currentWeather.name} </City>
