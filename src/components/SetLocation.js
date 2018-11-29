@@ -1,6 +1,21 @@
 import React from "react";
-import styled from "styled-components";
 import { AppContext } from "../AppProvider";
+import styled, { css, keyframes } from "styled-components";
+
+const animation = keyframes`
+0% {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+100% {
+  opacity: 1;
+  transform: translate(0);
+}
+`;
+const animationRule = css`
+  ${animation} 1s infinite alternate;
+`;
 
 const Container = styled.div`
   width: 100%;
@@ -10,6 +25,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation-name: ${animationRule};
+  animation-duration: 1s;
 `;
 const LocationInput = styled.input`
   width: 50%;
@@ -42,7 +59,7 @@ export default function SetLocation() {
   return (
     <AppContext.Consumer>
       {({ getLocation, setLocation }) => (
-        <Container className="anim__head">
+        <Container>
           <LocationInput onChange={e => takeLocation(e, getLocation)} />
           <SetLocationBTN onClick={setLocation}> Set Location </SetLocationBTN>
         </Container>

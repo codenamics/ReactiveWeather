@@ -24,12 +24,12 @@ export class AppLayout extends Component {
         {({ location }) => (
           <>
             {location ? (
-              <AppLayoutContent className="anim__head">
+              <AppLayoutContent>
                 <CurrentWeather />
                 <WeatherAdditional />
               </AppLayoutContent>
             ) : (
-              <AppLayoutSearch className="anim__head">
+              <AppLayoutSearch>
                 <SetLocation />
               </AppLayoutSearch>
             )}

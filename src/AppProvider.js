@@ -24,13 +24,13 @@ export class AppProvider extends Component {
     let item = JSON.parse(localStorage.getItem("city"));
     console.log(item);
     if (item) {
-      this.load(item);
+      this.fetchData(item);
     } else {
       return null;
     }
   };
 
-  load = item => {
+  fetchData = item => {
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${item}&units=metric&appid=4e2b39896dcc3622534cc498191bdc35`

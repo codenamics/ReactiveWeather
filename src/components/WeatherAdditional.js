@@ -45,7 +45,6 @@ const Conditions = styled(Header)`
   margin-top: 15px;
   padding: 20px;
   font-size: 50px;
-
   align-items: center;
   border-top: 1px solid #ffffff40;
 `;
