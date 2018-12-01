@@ -10,7 +10,7 @@ import clear from "../assets/clear-day.jpg";
 
 const calcImg = ({ currentWeather }) => {
   const data = currentWeather.weather[0].main;
-
+  console.log(data);
   if (data === "Thunderstorm") {
     return storm;
   }
@@ -26,7 +26,7 @@ const calcImg = ({ currentWeather }) => {
   if (data === "Clear") {
     return clear;
   }
-  if (data === "Atmosphere") {
+  if (data === "Atmosphere" || data === "Mist") {
     return fog;
   }
 };
@@ -71,8 +71,7 @@ export default function CurrentWeather() {
           {currentWeather ? (
             <CurrentWeatherContainer currentWeather={currentWeather}>
               <ChangeLocation onClick={changeLocation}>
-                {" "}
-                <i class="fas fa-search" />
+                <i className="fas fa-search" />
               </ChangeLocation>
               <WeatherContainerCurrent>
                 <Span> {currentWeather.main.temp}&#8451; </Span>
