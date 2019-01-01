@@ -49,9 +49,9 @@ const WeatherContainerCurrent = styled.div`
 `;
 
 const City = styled.h1`
-margin 0;
-font-size: 55px;
-font-weight:300
+  margin: 0;
+  font-size: 55px;
+  font-weight: 300;
 `;
 const Span = styled.span`
   font-size: 90px;
